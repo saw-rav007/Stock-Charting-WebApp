@@ -29,8 +29,10 @@ namespace UserAPI
             services.AddControllers();
             services.AddDbContext<AuthenticationContext>(options =>
                 options.UseSqlServer(_configuration["ConnectionStrings:IdentityConnection"]));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;

@@ -29,7 +29,8 @@ namespace UserAPI.Controllers
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                FullName = model.FullName
+                FullName = model.FullName,
+                PhoneNumber = model.MobileNumber
             };
             try
             {
