@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -12,6 +12,9 @@ import { AdminNavBarComponent } from './navbar/admin-nav-bar/admin-nav-bar.compo
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RouterModule } from '@angular/router';
+import { UserComponent } from './signup/user/user.component';
+import { RegistrationComponent } from './signup/user/registration/registration.component';
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { RouterModule } from '@angular/router';
     UserNavBarComponent,
     AdminNavBarComponent,
     AuthenticationComponent,
+    UserComponent,
+    RegistrationComponent,
     
   ],
   imports: [
@@ -29,9 +34,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), AppRoutingModule,  // ToastrModule added
-    RouterModule
+    RouterModule,ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
