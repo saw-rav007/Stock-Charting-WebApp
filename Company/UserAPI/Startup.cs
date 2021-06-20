@@ -1,3 +1,5 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -5,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using UserAPI.Data;
 using UserAPI.Entities;
@@ -25,7 +28,8 @@ namespace UserAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Inject Appsettings.Development
+            services.Configure<ApplicationSettings>(_configuration.GetSection("ApplicationSettings"));
             services.AddControllers();
             services.AddDbContext<AuthenticationContext>(options =>
                 options.UseSqlServer(_configuration["ConnectionStrings:IdentityConnection"]));
@@ -48,12 +52,35 @@ namespace UserAPI
 
             services.AddCors();
 
+            //Jwt Authenticaton
+
+            var key = Encoding.UTF8.GetBytes(_configuration["ApplicationSettings:JWT_Secret"].ToString());
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = false;
+                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = System.TimeSpan.Zero
+                };
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:4200")
+            app.UseCors(options => options.WithOrigins(_configuration["ApplicationSettings:Client_URL"].ToString())
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowAnyOrigin());
