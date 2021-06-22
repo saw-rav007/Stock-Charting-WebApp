@@ -1,0 +1,65 @@
+<header
+  class="
+    d-flex
+    flex-column flex-md-row
+    align-items-center
+    p-2
+    px-md-4
+    mb-3
+    bg-info
+    border-bottom
+    shadow-sm
+    fixed-top
+  "
+>
+  <a href="" style="color: inherit"
+    ><i class="fas fa-chart-line fa-3x mr-3" routerLink="/"></i
+  ></a>
+
+  <nav class="my-2 my-md-0 me-md-3 text-uppercase">
+    <h3 class="p-2 text-dark text-center" style="margin-left: 32rem">
+      Welcome To Stock Chart
+    </h3>
+  </nav>
+</header>
+
+<form #form="ngForm" class="mb-4" autocomplete="off" (submit)="OnSubmit(form)">
+  <div class="form-group">
+    <label>Username</label>
+    <input
+      class="form-control"
+      #UserName="ngModel"
+      name="UserName"
+      [(ngModel)]="formModel.UserName"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input
+      type="password"
+      class="form-control"
+      #Password="ngModel"
+      name="Password"
+      [(ngModel)]="formModel.Password"
+      required
+    />
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-3">
+      <button
+        style="
+          margin-top: 10px;
+          margin-bottom: -10px;
+          width: 9rem;
+          height: 2.6rem;
+        "
+        type="submit"
+        class="btn btn-lg btn-block bg-info"
+        [disabled]="form.invalid"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</form>

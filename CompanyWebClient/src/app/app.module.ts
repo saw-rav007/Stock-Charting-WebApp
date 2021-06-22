@@ -10,11 +10,12 @@ import {  HttpClientModule } from '@angular/common/http';
 import { UserNavBarComponent } from './navbar/user-nav-bar/user-nav-bar.component';
 import { AdminNavBarComponent } from './navbar/admin-nav-bar/admin-nav-bar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { RouterModule } from '@angular/router';
 import { UserComponent } from './signup/user/user.component';
 import { RegistrationComponent } from './signup/user/registration/registration.component';
 import { UserService } from './shared/user.service';
+import { LoginComponent } from './signup/user/login/login.component';
+import { HomeComponent } from './navbar/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { UserService } from './shared/user.service';
     CompanyDetailFormComponent,
     UserNavBarComponent,
     AdminNavBarComponent,
-    AuthenticationComponent,
     UserComponent,
     RegistrationComponent,
+    LoginComponent,
+    HomeComponent,
     
   ],
   imports: [
@@ -33,7 +35,9 @@ import { UserService } from './shared/user.service';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), AppRoutingModule,  // ToastrModule added
+    ToastrModule.forRoot({
+      progressBar: true
+    }), AppRoutingModule,  // ToastrModule added
     RouterModule,ReactiveFormsModule
   ],
   providers: [UserService],

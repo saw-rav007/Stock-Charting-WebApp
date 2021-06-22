@@ -1,119 +1,126 @@
-<div class="card" style="background-color: lightgoldenrodyellow">
-  <h4
-    class="card-header"
-    style="
-      text-align: center;
-      font-weight: initial;
-      margin: 20px;
-      background-color: lightgrey;
-    "
-  >
-    Register
-  </h4>
+<header
+  class="
+    d-flex
+    flex-column flex-md-row
+    align-items-center
+    p-2
+    px-md-4
+    mb-3
+    bg-white
+    border-bottom
+    shadow-sm
+    fixed-top
+  "
+>
+  <a href=""><i class="fas fa-chart-line fa-3x mr-3" routerLink="/"></i></a>
 
-  <form
-    [formGroup]="service.formModel"
-    autocomplete="off"
-    (submit)="OnSubmit()"
-    style="padding: 20px"
-  >
-    <div class="form-group required">
-      <label>Username</label>
-      <input type="text" class="form-control" formControlName="UserName" />
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('UserName')?.touched &&
-          service.formModel.get('UserName')?.errors?.required
-        "
-        >This field is mandatory</label
-      >
-    </div>
-    <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" class="form-control" formControlName="FullName" />
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('FullName')?.touched &&
-          service.formModel.get('FullName')?.errors?.required
-        "
-        >This field is mandatory</label
-      >
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" formControlName="Email" />
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('Email')?.touched &&
-          service.formModel.get('Email')?.errors?.email
-        "
-        >Invalid email address</label
-      >
-    </div>
-    <div class="form-group">
-      <label>MobileNumber</label>
-      <input type="text" class="form-control" formControlName="MobileNumber" />
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('MobileNumber')?.touched &&
-          service.formModel.get('MobileNumber')?.errors?.maxlength
-        "
-        >Must be of 10 digits</label
-      >
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('MobileNumber')?.touched &&
-          service.formModel.get('MobileNumber')?.errors?.minlength
-        "
-        >Must be of 10 digits</label
-      >
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('MobileNumber')?.touched &&
-          service.formModel.get('MobileNumber')?.errors?.pattern
-        "
-      >
-        & Only digits !</label
-      >
-    </div>
+  <nav class="my-2 my-md-0 me-md-3 text-uppercase">
+    <h3 class="p-2 text-dark text-center" style="margin-left: 32rem">
+      Welcome To Stock Chart
+    </h3>
+  </nav>
+</header>
 
-    <div class="form-group required">
-      <label>Password</label>
-      <input type="password" class="form-control" formControlName="Password" />
-      <label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('Password')?.touched &&
-          service.formModel.get('Password')?.errors?.minlength
+<form [formGroup]="service.formModel" autocomplete="off" (submit)="OnSubmit()">
+  <div class="form-group required">
+    <label>Username</label>
+    <input type="text" class="form-control" formControlName="UserName" />
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('UserName')?.touched &&
+        service.formModel.get('UserName')?.errors?.required
+      "
+      >This field is mandatory</label
+    >
+  </div>
+  <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" class="form-control" formControlName="FullName" />
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('FullName')?.touched &&
+        service.formModel.get('FullName')?.errors?.required
+      "
+      >This field is mandatory</label
+    >
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="Email" />
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('Email')?.touched &&
+        service.formModel.get('Email')?.errors?.email
+      "
+      >Invalid email address</label
+    >
+  </div>
+  <div class="form-group">
+    <label>MobileNumber</label>
+    <input type="text" class="form-control" formControlName="MobileNumber" />
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('MobileNumber')?.touched &&
+        service.formModel.get('MobileNumber')?.errors?.maxlength
+      "
+      >Must be of 10 digits</label
+    >
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('MobileNumber')?.touched &&
+        service.formModel.get('MobileNumber')?.errors?.minlength
+      "
+      >Must be of 10 digits</label
+    >
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('MobileNumber')?.touched &&
+        service.formModel.get('MobileNumber')?.errors?.pattern
+      "
+    >
+      & Only digits !</label
+    >
+  </div>
+  <div class="form-group required">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="Password" />
+    <label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('Password')?.touched &&
+        service.formModel.get('Password')?.errors?.minlength
+      "
+      >Minimum 4 characters</label
+    ><label
+      class="text-danger"
+      *ngIf="
+        service.formModel.get('Password')?.touched &&
+        service.formModel.get('Password')?.errors?.required
+      "
+      >This field is mandatory</label
+    >
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-3">
+      <button
+        style="
+          margin-top: 10px;
+          margin-bottom: 10px;
+          width: 9rem;
+          height: 2.6rem;
         "
-        >Minimum 4 characters</label
-      ><label
-        class="text-danger"
-        *ngIf="
-          service.formModel.get('Password')?.touched &&
-          service.formModel.get('Password')?.errors?.required
-        "
-        >This field is mandatory</label
+        type="submit"
+        class="btn btn-lg btn-block"
+        [disabled]="!service.formModel.valid"
       >
+        Sign Up
+      </button>
     </div>
-
-    <br />
-    <div class="form-group">
-      <div class="d-grid gap-2">
-        <button
-          class="btn btn-info btn-lg btn-block"
-          [disabled]="!service.formModel.valid"
-          type="submit"
-        >
-          Sign UP
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
+  </div>
+</form>
