@@ -32,6 +32,7 @@ namespace UserAPI.Controllers
 
         public async Task<object> PostApplicationUser(ApplicationUserModel model)
         {
+            model.Role = "Admin";
             var applicationUser = new ApplicationUser()
             {
                 UserName = model.UserName,
@@ -42,6 +43,7 @@ namespace UserAPI.Controllers
             try
             {
                 var result = await _userManager.CreateAsync(applicationUser, model.Password);
+                await _userManager.AddToRoleAsync(applicationUser, model.Role);
                 return Ok(result);
             }
             catch (Exception ex)

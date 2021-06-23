@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { from } from 'rxjs';
 import { CompanyDetail } from 'src/app/shared/company-detail.model';
 import { CompanyDetailService } from 'src/app/shared/company-detail.service';
 

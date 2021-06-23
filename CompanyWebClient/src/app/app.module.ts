@@ -16,6 +16,9 @@ import { RegistrationComponent } from './signup/user/registration/registration.c
 import { UserService } from './shared/user.service';
 import { LoginComponent } from './signup/user/login/login.component';
 import { HomeComponent } from './navbar/home/home.component';
+import { IpoDetailsComponent } from './ipo-details/ipo-details.component';
+import { IpoDetailsFormComponent } from './ipo-details/ipo-details-form/ipo-details-form.component';
+import { ImportExcelComponent } from './import-excel/import-excel.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { HomeComponent } from './navbar/home/home.component';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
+    IpoDetailsComponent,
+    IpoDetailsFormComponent,
+    ImportExcelComponent,
     
   ],
   imports: [

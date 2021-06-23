@@ -31,6 +31,9 @@ namespace CompanyAPI
             services.AddDbContext<CompanyContext>(
                opt => opt.UseSqlServer(_configuration["ConnectionStrings:DefaultConnection"])
                );
+            services.AddDbContext<IpoContext>(
+               opt => opt.UseSqlServer(_configuration["ConnectionStrings:DefaultConnection"])
+               );
             services.AddCors();
         }
 

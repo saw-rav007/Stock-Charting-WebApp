@@ -35,6 +35,7 @@ namespace UserAPI
                 options.UseSqlServer(_configuration["ConnectionStrings:IdentityConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
             services.Configure<IdentityOptions>(options =>

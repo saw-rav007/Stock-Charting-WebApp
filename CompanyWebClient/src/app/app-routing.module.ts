@@ -8,6 +8,8 @@ import { LoginComponent } from './signup/user/login/login.component';
 import { HomeComponent } from './navbar/home/home.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth.guard';
+import { IpoDetailsComponent } from './ipo-details/ipo-details.component';
+import { ImportExcelComponent } from './import-excel/import-excel.component';
 
 const routes: Routes=[
   {path: '', redirectTo:'user/login', pathMatch:'full'},
@@ -17,6 +19,8 @@ const routes: Routes=[
     { path: 'login',  component: LoginComponent}
   ]},
   { path:'create', component: CompanyDetailsComponent},
+  { path:'ipocreate', component: IpoDetailsComponent},
+  { path:'import', component: ImportExcelComponent},
   {path:'home', component:AppComponent,canActivate:[AuthGuard]}
  
 ];

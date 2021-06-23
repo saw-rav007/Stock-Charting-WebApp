@@ -7,5 +7,6 @@ namespace UserAPI.Entities
         public string Password { get; set; }
         public string FullName { get; set; }
         public string MobileNumber { get; set; }
+        public string Role { get; set; }
     }
 }

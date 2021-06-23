@@ -1,0 +1,31 @@
+<div class="col-md-8 form-group">
+  <input
+    type="file"
+    class="form-control"
+    (change)="addfile($event)"
+    placeholder="Upload file"
+    accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+  />
+</div>
+
+<br />
+<table class="table table-dark">
+  <thead class="thead-light">
+    <tr>
+      <th>Company Stock Code</th>
+      <th>StockExchange ID</th>
+      <th>CurrentPrice</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cd of jsonData">
+      <td>{{ cd.CompanyStockCode }}</td>
+      <td>{{ cd.StockExchangeId }}</td>
+      <td>{{ cd.CurrentPrice }}</td>
+      <td>{{ cd.Date }}</td>
+      <td>{{ cd.Time }}</td>
+    </tr>
+  </tbody>
+</table>
